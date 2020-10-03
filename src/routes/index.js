@@ -1,15 +1,24 @@
 import App from '../App';
 import ywkclb from '../ywkclb/index';
+import login from '../login/index';
 
 const routes = [
   {
     path: "/",
-    component: App
+    component: App,
+    exact: true,
+    routes: []
     // loadData: () => getSomeData()
   },
   {
     path: "/ywkclb",
-    component: ywkclb
+    component: ywkclb,
+    exact: true
+  },
+  {
+    path: "/login",
+    component: login,
+    exact: true
   }
 ];
 
