@@ -24,18 +24,25 @@ class ywkclb extends React.Component {
           dataIndex: 'address',
         },
       ],
-      data: []
+      data: [],
+      tableScroll: {
+        y: 654
+      }
     };
   }
   componentDidMount() {
+    let testData = []
     for (let i = 0; i < 100; i++) {
-      this.state.data.push({
+      testData.push({
         key: i,
         name: `Edward King ${i}`,
         age: 32,
         address: `London, Park Lane no. ${i}`,
       });
     }
+    this.setState({data: testData});
+    // 用于判断数据为空时，清除无数据提示的滚动条
+    // this.setState({tableScroll: {}});
   }
   onFinish (formData) {
     console.log("onFinish!", formData);
@@ -85,8 +92,8 @@ class ywkclb extends React.Component {
         </div>
         <div className="jtyw-table-list">
           <Table columns={this.state.columns} dataSource={this.state.data}
-          loading={this.state.loading} bordered size="small"
-          pagination={false} scroll={{ y: 654 }} />
+          loading={this.state.loading} bordered size="small" rowSelection={{type: 'checkbox'}}
+          pagination={false} scroll={{ ...this.state.tableScroll }} />
         </div>
         <div className="jtyw-footer">
           <Pagination size="small" total={this.state.total} defaultCurrent={1}
