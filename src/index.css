@@ -46,7 +46,7 @@ table { border-collapse:collapse; border-spacing:0; }
 .jtyw-table-list {
   width: 100%;
   overflow: hidden;
-  max-height: 692px;
+  height: 692px;
 }
 .jtyw-footer {
   text-align: end;
