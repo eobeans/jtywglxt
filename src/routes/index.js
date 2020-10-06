@@ -1,3 +1,12 @@
+/*
+ * @Author: eobeans
+ * @Date: 2020-10-03 16:38:59
+ * @LastEditors: eobeans
+ * @LastEditTime: 2020-10-06 18:45:18
+ * @version: 0.1.0
+ * @Descripttion: 前端路由
+ */
+
 import App from '../App';
 import ywkclb from '../ywkclb/index';
 import login from '../login/index';

@@ -1,3 +1,11 @@
+/*
+ * @Author: eobeans
+ * @Date: 2020-08-28 17:52:54
+ * @LastEditors: eobeans
+ * @LastEditTime: 2020-10-06 18:44:42
+ * @version: 0.1.0
+ * @Descripttion: 
+ */
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import routes from './routes/index';

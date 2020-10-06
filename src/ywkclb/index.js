@@ -1,7 +1,16 @@
+/*
+ * @Author: eobeans
+ * @Date: 2020-10-03 16:36:59
+ * @LastEditors: eobeans
+ * @LastEditTime: 2020-10-06 18:44:00
+ * @version: 0.1.0
+ * @Descripttion: 药物库存列表查询页面
+ */
 import React from 'react';
 import { Row, Col, Button, Form, Input, Space, Pagination, Table } from 'antd';
 import { SearchOutlined, UndoOutlined } from '@ant-design/icons';
 import './index.css';
+
 class ywkclb extends React.Component {
   constructor(props) {
     super(props);
