@@ -2,7 +2,7 @@
  * @Author: eobeans
  * @Date: 2020-10-03 16:36:59
  * @LastEditors: eobeans
- * @LastEditTime: 2020-10-07 18:10:15
+ * @LastEditTime: 2020-10-07 18:29:25
  * @version: 0.1.0
  * @Descripttion: 药物库存列表查询页面
  */
@@ -115,8 +115,8 @@ class ywkclb extends React.Component {
             name='ywkcForm'
             size="small"
           >
-            <Row>
-              <Col span="8">
+            <Row justify="space-between">
+              <Col span="7" key="c1">
                 <Form.Item
                   name='hzxm'
                   label='患者姓名'
@@ -124,7 +124,7 @@ class ywkclb extends React.Component {
                   <Input placeholder="请输入患者姓名" />
                 </Form.Item>
               </Col>
-              <Col span="8">
+              <Col span="7" key="c2">
                 <Form.Item
                   name='ywmc'
                   label='药物名称'
@@ -132,7 +132,7 @@ class ywkclb extends React.Component {
                   <Input placeholder="请输入药物名称" />
                 </Form.Item>
               </Col>
-              <Col span="8">
+              <Col span="7" key="c3">
                 <Form.Item
                   name='ywpp'
                   label='药物品牌'

@@ -2,7 +2,7 @@
  * @Author: eobeans
  * @Date: 2020-08-28 17:52:54
  * @LastEditors: eobeans
- * @LastEditTime: 2020-10-07 17:09:58
+ * @LastEditTime: 2020-10-07 18:23:14
  * @version: 0.1.0
  * @Descripttion: 
  */
@@ -23,6 +23,9 @@ fieldset, img { border:0; }
 button, input, select, textarea { font-size:100%; } 
 table { border-collapse:collapse; border-spacing:0; } 
 
+.ant-row {
+  height: 26px;
+}
 .ant-table-placeholder {
   height: 654px;
 }
