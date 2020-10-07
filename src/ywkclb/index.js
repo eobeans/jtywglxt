@@ -2,17 +2,17 @@
  * @Author: eobeans
  * @Date: 2020-10-03 16:36:59
  * @LastEditors: eobeans
- * @LastEditTime: 2020-10-07 15:25:39
+ * @LastEditTime: 2020-10-07 18:10:15
  * @version: 0.1.0
  * @Descripttion: 药物库存列表查询页面
  */
 import React from 'react';
 import { Row, Col, Button, Form, Input, Space, Pagination, Table } from 'antd';
-import { SearchOutlined, UndoOutlined } from '@ant-design/icons';
+import { SearchOutlined, SyncOutlined, PlusOutlined, DeleteOutlined, ShakeOutlined } from '@ant-design/icons';
 import './index.css';
 import Conn from '../connection/ywkclbConn';
-
 class ywkclb extends React.Component {
+  ywkcForm = React.createRef();
   constructor(props) {
     super(props);
     this.state = {
@@ -37,8 +37,19 @@ class ywkclb extends React.Component {
       data: [],
       tableScroll: {
         y: 654
-      }
+      },
+      // 查询表单 Start
+      hzxm: '', // 患者姓名
+      ywmc: '', // 药物名称
+      ywpp: '', // 药物品牌
+      // 查询表单 End
+      selectArr: [], // 选中的数据
+      alterAble: true, // 修改按钮是否可点击
+      delAble: true, // 删除按钮是否可点击
     };
+    // this.ywkcForm = Form.useForm();
+    this.search = this.search.bind(this);
+    this.resetData = this.resetData.bind(this);
   }
   componentDidMount() {
     let testData = []
@@ -55,17 +66,19 @@ class ywkclb extends React.Component {
     // this.setState({tableScroll: {}});
     Conn.getYwkclb();
   }
-  onFinish (formData) {
-    console.log("onFinish!", formData);
-  }
-  onFinishFailed (err) {
-    console.log(err)
-  }
   onShowSizeChange (current, size) {
     console.log('current', current);
   }
   onChange (pageNumber) {
     console.log('Page: ', pageNumber);
+  }
+  // 查询
+  search () {
+    console.log('search',this.state.hzxm);
+  }
+  // 重置
+  resetData () {
+    this.ywkcForm.current.resetFields();
   }
   render() {
     return (
@@ -73,30 +86,59 @@ class ywkclb extends React.Component {
         <div className="jtyw-title">药物库存列表查询页面</div>
         <div className="jtyw-btn-list">
           <Space>
-            <Button type="primary" size="small" icon={<SearchOutlined />}>查询</Button>
-            <Button type="primary" size="small" icon={<UndoOutlined />}>reset</Button>
+            <Button type="primary"
+              size="small"
+              icon={<SearchOutlined />}
+              onClick={this.search}>查询
+            </Button>
+            <Button size="small"
+              icon={<SyncOutlined />}
+              onClick={this.resetData}>重置
+            </Button>
+            <Button type="primary"
+              size="small"
+              icon={<PlusOutlined />}>新增
+            </Button>
+            <Button type="primary"
+              size="small"
+              icon={<ShakeOutlined />}>修改
+            </Button>
+            <Button type="primary"
+              size="small"
+              icon={<DeleteOutlined />} danger>删除
+            </Button>
           </Space>
         </div>
         <div className="jtyw-search-form">
           <Form
-            name="basic"
-            initialValues={{ remember: true }}
-            onFinish={this.onFinish}
-            onFinishFailed={this.onFinishFailed}
+            ref={this.ywkcForm}
+            name='ywkcForm'
             size="small"
           >
             <Row>
               <Col span="8">
-                <span className="jtyw-search-label">患者姓名</span>
-                <Input className="jtyw-search-item"></Input>
+                <Form.Item
+                  name='hzxm'
+                  label='患者姓名'
+                >
+                  <Input placeholder="请输入患者姓名" />
+                </Form.Item>
               </Col>
               <Col span="8">
-                <span className="jtyw-search-label">药物名称</span>
-                <Input className="jtyw-search-item"></Input>
+                <Form.Item
+                  name='ywmc'
+                  label='药物名称'
+                >
+                  <Input placeholder="请输入药物名称" />
+                </Form.Item>
               </Col>
               <Col span="8">
-                <span className="jtyw-search-label">药物名称</span>
-                <Input className="jtyw-search-item"></Input>
+                <Form.Item
+                  name='ywpp'
+                  label='药物品牌'
+                >
+                  <Input placeholder="请输入药物品牌" />
+                </Form.Item>
               </Col>
             </Row>
           </Form>

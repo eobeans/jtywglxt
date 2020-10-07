@@ -2,7 +2,7 @@
  * @Author: eobeans
  * @Date: 2020-08-28 17:52:54
  * @LastEditors: eobeans
- * @LastEditTime: 2020-10-06 18:45:26
+ * @LastEditTime: 2020-10-07 17:09:58
  * @version: 0.1.0
  * @Descripttion: 
  */
@@ -47,14 +47,15 @@ table { border-collapse:collapse; border-spacing:0; }
   width: 100%;
   margin: 0 0 12px 0;
 }
-.jtyw-search-label {
+/* 使用form item , 暂时失效 */
+/* .jtyw-search-label {
   margin-left: 6px;
 }
 .jtyw-search-item {
   float: right;
   width: calc(100% - 80px);
   margin: 0 8px;
-}
+} */
 .jtyw-table-list {
   width: 100%;
   overflow: hidden;
