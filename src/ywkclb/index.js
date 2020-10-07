@@ -2,7 +2,7 @@
  * @Author: eobeans
  * @Date: 2020-10-03 16:36:59
  * @LastEditors: eobeans
- * @LastEditTime: 2020-10-06 18:44:00
+ * @LastEditTime: 2020-10-07 15:25:39
  * @version: 0.1.0
  * @Descripttion: 药物库存列表查询页面
  */
@@ -10,6 +10,7 @@ import React from 'react';
 import { Row, Col, Button, Form, Input, Space, Pagination, Table } from 'antd';
 import { SearchOutlined, UndoOutlined } from '@ant-design/icons';
 import './index.css';
+import Conn from '../connection/ywkclbConn';
 
 class ywkclb extends React.Component {
   constructor(props) {
@@ -52,6 +53,7 @@ class ywkclb extends React.Component {
     this.setState({data: testData});
     // 用于判断数据为空时，清除无数据提示的滚动条
     // this.setState({tableScroll: {}});
+    Conn.getYwkclb();
   }
   onFinish (formData) {
     console.log("onFinish!", formData);
