@@ -2,7 +2,7 @@
  * @Author: eobeans
  * @Date: 2020-08-28 17:52:54
  * @LastEditors: eobeans
- * @LastEditTime: 2020-10-06 18:44:31
+ * @LastEditTime: 2020-10-11 15:46:31
  * @version: 0.1.0
  * @Descripttion: 
  */
@@ -12,6 +12,7 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './index.css';
+import './mock/index';
 
 render((
   <BrowserRouter>
