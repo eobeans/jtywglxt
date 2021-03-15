@@ -2,7 +2,7 @@
  * @Author: eobeans
  * @Date: 2020-10-03 16:36:59
  * @LastEditors: eobeans
- * @LastEditTime: 2020-10-11 20:32:56
+ * @LastEditTime: 2021-03-15 17:01:58
  * @version: 0.1.0
  * @Descripttion: 药物库存列表查询页面
  */
@@ -53,6 +53,7 @@ class ywkclb extends React.Component {
     };
     // this.ywkcForm = Form.useForm();
     this.search = this.search.bind(this);
+    this.KDsearch = this.KDsearch.bind(this);
     this.resetData = this.resetData.bind(this);
   }
   componentDidMount() {
@@ -81,11 +82,26 @@ class ywkclb extends React.Component {
   }
   // 查询
   search () {
-    console.log('search',this.state.hzxm);
+    const FormData = this.ywkcForm.current.getFieldsValue();
+    // this.setState({
+    //   hzxm: FormData.hzxm?FormData.hzxm:'',
+    //   ywmc: FormData.ywmc?FormData.ywmc:'',
+    //   ywpp: FormData.ywpp?FormData.ywpp:'',
+    // })
+    console.log('search', FormData);
+  }
+  KDsearch (e) {
+    if (e.keyCode === 13) {
+      this.search();
+    }
   }
   // 重置
   resetData () {
     this.ywkcForm.current.resetFields();
+  }
+  // 新增
+  addData () {
+    console.log('addData');
   }
   render() {
     return (
@@ -104,7 +120,8 @@ class ywkclb extends React.Component {
             </Button>
             <Button type="primary"
               size="small"
-              icon={<PlusOutlined />}>新增
+              icon={<PlusOutlined />}
+              onClick={this.addData}>新增
             </Button>
             <Button type="primary"
               size="small"
@@ -128,7 +145,7 @@ class ywkclb extends React.Component {
                   name='hzxm'
                   label='患者姓名'
                 >
-                  <Input placeholder="请输入患者姓名" />
+                  <Input placeholder="请输入患者姓名" onKeyDown={this.KDsearch}/>
                 </Form.Item>
               </Col>
               <Col span="7" key="c2">
@@ -136,7 +153,7 @@ class ywkclb extends React.Component {
                   name='ywmc'
                   label='药物名称'
                 >
-                  <Input placeholder="请输入药物名称" />
+                  <Input placeholder="请输入药物名称" onKeyDown={this.KDsearch}/>
                 </Form.Item>
               </Col>
               <Col span="7" key="c3">
@@ -144,7 +161,7 @@ class ywkclb extends React.Component {
                   name='ywpp'
                   label='药物品牌'
                 >
-                  <Input placeholder="请输入药物品牌" />
+                  <Input placeholder="请输入药物品牌" onKeyDown={this.KDsearch}/>
                 </Form.Item>
               </Col>
             </Row>
