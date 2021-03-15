@@ -2,7 +2,7 @@
  * @Author: eobeans
  * @Date: 2020-10-03 16:36:59
  * @LastEditors: eobeans
- * @LastEditTime: 2020-10-07 18:29:25
+ * @LastEditTime: 2020-10-11 20:32:56
  * @version: 0.1.0
  * @Descripttion: 药物库存列表查询页面
  */
@@ -16,7 +16,6 @@ class ywkclb extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      total: 50,
       loading: false,
       columns: [
         {
@@ -34,10 +33,15 @@ class ywkclb extends React.Component {
           dataIndex: 'address',
         },
       ],
-      data: [],
       tableScroll: {
         y: 654
       },
+      // 列表 Start
+      total: 50,
+      pageIndex: 1, // 当前页码
+      pageSize: 10, // 当前页列数数量
+      data: [],
+      // 列表 End
       // 查询表单 Start
       hzxm: '', // 患者姓名
       ywmc: '', // 药物名称
@@ -52,19 +56,22 @@ class ywkclb extends React.Component {
     this.resetData = this.resetData.bind(this);
   }
   componentDidMount() {
-    let testData = []
-    for (let i = 0; i < 100; i++) {
-      testData.push({
-        key: i,
-        name: `Edward King ${i}`,
-        age: 32,
-        address: `London, Park Lane no. ${i}`,
-      });
-    }
-    this.setState({data: testData});
     // 用于判断数据为空时，清除无数据提示的滚动条
     // this.setState({tableScroll: {}});
-    Conn.getYwkclb();
+    Conn.getYwkclb()
+      .then(res => {
+        if(res.data) {
+          this.setState({data: res.data, total: res.total,
+            pageIndex: res.pageIndex, pageSize: res.pageSize});
+        } else {
+          this.setState({tableScroll: {}});
+        }
+      })
+      .catch((err) => {
+        // 数据为空时清除无数据提示的滚动条
+        this.setState({tableScroll: {}});
+        console.log(err);
+      })
   }
   onShowSizeChange (current, size) {
     console.log('current', current);
